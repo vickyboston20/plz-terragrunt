@@ -1,0 +1,52 @@
+; Please config file
+; Leaving this file as is is enough to use plz to build your project.
+; Please will stay on whatever version you currently have until you run
+; 'plz update', when it will download the latest available version.
+;
+; Or you can uncomment the following to pin everyone to a particular version;
+; when you change it all users will automatically get updated.
+; [please]
+; version = 16.5.0
+[alias "auth"]
+cmd = run //third_party/aws_auth:auth --
+subcommand = local
+subcommand = dev
+subcommand = test
+subcommand = prod
+
+[alias "tfinit"]
+cmd = run //module/aws:init_module
+
+[alias "plan"]
+cmd = run //module/aws:plan_module
+
+[alias "apply"]
+cmd = run //module/aws:apply_module
+
+[alias "destroy"]
+cmd = run //module/aws:destroy_module
+
+[alias "output"]
+cmd = run //module/aws:output_module
+
+[alias "plan_all"]
+cmd = run //module/aws:plan_all
+
+[alias "apply_all"]
+cmd = run //module/aws:apply_all
+
+[alias "destroy_all"]
+cmd = run //module/aws:destroy_all
+
+[alias "output_all"]
+cmd = run //module/aws:output_all
+
+[build]
+path = /home/vickyboston20/.local/bin:/home/vickyboston20/.bin:/home/vickyboston20/.please:/usr/local/sbin:/usr/local/bin:/home/linuxbrew/.linuxbrew/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin
+timeout = 7200 # in seconds (2 hours)
+PassEnv = TERRAFORM_VERSION
+PassEnv = TERRAGRUNT_VERSION
+PassEnv = AWS_ACCESS_KEY_ID
+PassEnv = AWS_SECRET_ACCESS_KEY
+PassEnv = AWS_DEFAULT_REGION
+PassEnv = ENV
